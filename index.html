@@ -6,85 +6,7 @@
 <title>Alice — Wine Training Manual</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Libre+Franklin:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-* {margin:0; padding:0; box-sizing:border-box;}
-:root {
-  --wine:#6B1D2A; --wine-deep:#3D0F18; --wine-light:#8B2E3D;
-  --gold:#C5A55A; --gold-light:#D4BC7C; --cream:#F5F0E8; 
-  --cream-dark:#E8DFD0; --ink:#1A1A1A; --ink-light:#3A3A3A; 
-  --white:#FEFDFB; --rose:#D4A0A7; --green-olive:#5A6B4A;
-}
-html {scroll-behavior: smooth; font-size:16px;}
-body {font-family:'Cormorant Garamond',Georgia,serif; background:var(--cream); color:var(--ink); line-height:1.7; overflow-x:hidden;}
-
-.hero {
-  min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center;
-  background:var(--wine-deep); position:relative; overflow:hidden; text-align:center; padding:2rem;
-}
-.hero-content {position:relative; z-index:1; max-width:700px;}
-.hero-badge {display:inline-block; border:1px solid var(--gold); color:var(--gold); font-family:'Libre Franklin',sans-serif; font-size:0.65rem; letter-spacing:0.35em; text-transform:uppercase; padding:0.5rem 1.8rem; margin-bottom:2rem;}
-.hero h1 {font-family:'Playfair Display',serif; font-size:clamp(2.8rem,6vw,5rem); font-weight:700; color:var(--white); line-height:1.1; margin-bottom:0.5rem;}
-.hero h1 em {font-style:italic; font-weight:400; color:var(--gold);}
-.hero-sub {font-family:'Cormorant Garamond',serif; font-size:1.3rem; font-weight:300; color:var(--rose); margin-bottom:2.5rem;}
-.hero-line {width:60px; height:1px; background:var(--gold); margin:0 auto 2rem;}
-.hero-address {font-family:'Libre Franklin',sans-serif; font-size:0.7rem; letter-spacing:0.25em; text-transform:uppercase; color:rgba(255,255,255,0.4);}
-
-.toc {
-  position:sticky; top:0; z-index:100; background:var(--wine-deep); border-bottom:1px solid rgba(197,165,90,0.2);
-  padding:0; overflow-x:auto; display:flex; justify-content:center; flex-wrap:wrap;
-}
-.toc a {
-  font-family:'Libre Franklin',sans-serif; font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase;
-  color:rgba(255,255,255,0.5); text-decoration:none; padding:1rem 1.2rem; transition:color 0.3s; white-space:nowrap;
-}
-.toc a:hover {color:var(--gold);}
-
-section {max-width:900px; margin:0 auto; padding:5rem 2rem;}
-section h2 {font-family:'Playfair Display',serif; font-size:clamp(2rem,4vw,2.8rem); font-weight:700; color:var(--wine); margin-bottom:0.3rem;}
-section h2 em {font-weight:400; font-style:italic; color:var(--wine-light);}
-.section-rule {width:50px; height:2px; background:var(--gold); margin:0.8rem 0 2rem;}
-section h3 {font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:600; color:var(--wine); margin:2.5rem 0 0.8rem;}
-section p, section li {font-size:1.05rem; color:var(--ink-light); line-height:1.8; margin-bottom:0.8rem;}
-
-.wine-grid {display:grid; grid-template-columns:1fr; gap:1.5rem; margin:2rem 0;}
-@media(min-width:600px) {.wine-grid {grid-template-columns:1fr 1fr;}}
-
-.wine-card {
-  background:var(--white); border:1px solid var(--cream-dark); border-radius:2px;
-  padding:1.8rem 1.6rem; position:relative; transition:box-shadow 0.3s, transform 0.2s;
-}
-.wine-card:hover {box-shadow:0 8px 30px rgba(61,15,24,0.08); transform:translateY(-2px);}
-.wine-card.premium {border-color:var(--gold); background:linear-gradient(135deg,var(--white) 0%,#FBF8F0 100%);}
-.wine-card.premium::before {content:'★ PREMIUM'; position:absolute; top:0.8rem; right:0.8rem; font-family:'Libre Franklin',sans-serif; font-size:0.55rem; letter-spacing:0.15em; color:var(--gold); background:var(--wine-deep); padding:0.25rem 0.6rem; border-radius:1px;}
-.wine-card .wc-type {font-family:'Libre Franklin',sans-serif; font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:0.3rem;}
-.wine-card .wc-name {font-family:'Playfair Display',serif; font-size:1.25rem; font-weight:600; color:var(--wine-deep); margin-bottom:0.5rem;}
-.wine-card .wc-profile {font-size:0.95rem; color:var(--ink-light); margin-bottom:0.6rem; line-height:1.6;}
-.wine-card .wc-pair {font-family:'Libre Franklin',sans-serif; font-size:0.75rem; color:var(--green-olive);}
-.wine-card .wc-script {margin-top:0.8rem; padding-top:0.8rem; border-top:1px dashed var(--cream-dark); font-size:0.85rem; font-style:italic; color:var(--wine-light); line-height:1.6;}
-.wine-card .wc-script strong {font-style:normal; color:var(--wine);}
-
-.cat-header {text-align:center; margin:3.5rem 0 2rem; position:relative;}
-.cat-header::before, .cat-header::after {content:''; position:absolute; top:50%; width:calc(50% - 100px); height:1px; background:linear-gradient(90deg,transparent,var(--cream-dark));}
-.cat-header::before {left:0;}
-.cat-header::after {right:0; background:linear-gradient(90deg,var(--cream-dark),transparent);}
-.cat-header span {font-family:'Libre Franklin',sans-serif; font-size:0.65rem; letter-spacing:0.35em; text-transform:uppercase; color:var(--wine); background:var(--cream); padding:0 1.5rem; position:relative;}
-
-.scenario {background:var(--white); border:1px solid var(--cream-dark); padding:1.8rem; margin:1.5rem 0; border-radius:2px;}
-.scenario .sc-label {font-family:'Libre Franklin',sans-serif; font-size:0.6rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--gold); margin-bottom:0.8rem; display:block;}
-.scenario .sc-guest {font-size:1rem; color:var(--ink); padding:0.6rem 0.8rem; background:var(--cream); border-left:3px solid var(--cream-dark); margin-bottom:0.8rem;}
-.scenario .sc-you {font-size:1rem; color:var(--wine); padding:0.6rem 0.8rem; background:rgba(107,29,42,0.04); border-left:3px solid var(--wine); font-style:italic;}
-.scenario .sc-note {font-family:'Libre Franklin',sans-serif; font-size:0.72rem; color:var(--green-olive); margin-top:0.8rem; padding-top:0.6rem; border-top:1px dashed var(--cream-dark);}
-
-.golden-box {background:linear-gradient(135deg,#FBF8F0,var(--white)); border:1.5px solid var(--gold); padding:2.5rem 2rem; margin:2rem 0; text-align:center;}
-.golden-box h4 {font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700; color:var(--gold); letter-spacing:0.05em; margin-bottom:1rem;}
-.golden-box p {font-size:1rem; color:var(--ink-light); max-width:600px; margin:0 auto 0.5rem;}
-
-.footer {background:var(--wine-deep); text-align:center; padding:3rem 2rem; color:rgba(255,255,255,0.3); font-family:'Libre Franklin',sans-serif; font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase;}
-.footer .ff-logo {font-family:'Playfair Display',serif; font-size:1.8rem; font-weight:700; color:var(--white); letter-spacing:0.05em; margin-bottom:0.5rem;}
-
-@media(max-width:600px) {
-  section {padding:3rem 1.2rem;}
-  .wine-card .wc-script {font-size:0.8rem;}
-}
+*{margin:0;padding:0;box-sizing:border-box}:root{--wine:#6B1D2A;--wine-deep:#3D0F18;--wine-light:#8B2E3D;--gold:#C5A55A;--gold-light:#D4BC7C;--cream:#F5F0E8;--cream-dark:#E8DFD0;--ink:#1A1A1A;--ink-light:#3A3A3A;--white:#FEFDFB;--rose:#D4A0A7;--green-olive:#5A6B4A}html{scroll-behavior:smooth;font-size:16px}body{font-family:'Cormorant Garamond',Georgia,serif;background:var(--cream);color:var(--ink);line-height:1.7;overflow-x:hidden}.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--wine-deep);position:relative;overflow:hidden;text-align:center;padding:2rem}.hero-content{position:relative;z-index:1;max-width:700px}.hero-badge{display:inline-block;border:1px solid var(--gold);color:var(--gold);font-family:'Libre Franklin',sans-serif;font-size:0.65rem;letter-spacing:0.35em;text-transform:uppercase;padding:0.5rem 1.8rem;margin-bottom:2rem}.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,6vw,5rem);font-weight:700;color:var(--white);line-height:1.1;margin-bottom:0.5rem}.hero h1 em{font-style:italic;font-weight:400;color:var(--gold)}.hero-sub{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:300;color:var(--rose);margin-bottom:2.5rem}.hero-line{width:60px;height:1px;background:var(--gold);margin:0 auto 2rem}.hero-address{font-family:'Libre Franklin',sans-serif;font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,0.4)}.toc{position:sticky;top:0;z-index:100;background:var(--wine-deep);border-bottom:1px solid rgba(197,165,90,0.2);padding:0;overflow-x:auto;display:flex;justify-content:center;flex-wrap:wrap}.toc a{font-family:'Libre Franklin',sans-serif;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.5);text-decoration:none;padding:1rem 1.2rem;transition:color 0.3s;white-space:nowrap}.toc a:hover{color:var(--gold)}section{max-width:900px;margin:0 auto;padding:5rem 2rem}section h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,2.8rem);font-weight:700;color:var(--wine);margin-bottom:0.3rem}section h2 em{font-weight:400;font-style:italic;color:var(--wine-light)}.section-rule{width:50px;height:2px;background:var(--gold);margin:0.8rem 0 2rem}section h3{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:600;color:var(--wine);margin:2.5rem 0 0.8rem}section p,section li{font-size:1.05rem;color:var(--ink-light);line-height:1.8;margin-bottom:0.8rem}.wine-grid{display:grid;grid-template-columns:1fr;gap:1.5rem;margin:2rem 0}@media(min-width:600px){.wine-grid{grid-template-columns:1fr 1fr}}.wine-card{background:var(--white);border:1px solid var(--cream-dark);border-radius:2px;padding:1.8rem 1.6rem;position:relative;transition:box-shadow 0.3s,transform 0.2s}.wine-card:hover{box-shadow:0 8px 30px rgba(61,15,24,0.08);transform:translateY(-2px)}.wine-card.premium{border-color:var(--gold);background:linear-gradient(135deg,var(--white) 0%,#FBF8F0 100%)}.wine-card.premium::before{content:'★ PREMIUM';position:absolute;top:0.8rem;right:0.8rem;font-family:'Libre Franklin',sans-serif;font-size:0.55rem;letter-spacing:0.15em;color:var(--gold);background:var(--wine-deep);padding:0.25rem 0.6rem;border-radius:1px}.wine-card .wc-name{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:600;color:var(--wine-deep);margin-bottom:0.5rem}.wine-card .wc-price{font-family:'Libre Franklin',sans-serif;font-size:0.85rem;color:var(--gold);font-weight:600;margin-bottom:0.5rem}.wine-card .wc-profile{font-size:0.95rem;color:var(--ink-light);margin-bottom:0.6rem;line-height:1.6}.wine-card .wc-tag{display:inline-block;font-family:'Libre Franklin',sans-serif;font-size:0.55rem;letter-spacing:0.1em;text-transform:uppercase;background:var(--wine-light);color:var(--white);padding:0.2rem 0.5rem;border-radius:1px;margin-top:0.5rem}.cat-header{text-align:center;margin:3.5rem 0 2rem;position:relative}.cat-header::before,.cat-header::after{content:'';position:absolute;top:50%;width:calc(50% - 100px);height:1px;background:linear-gradient(90deg,transparent,var(--cream-dark))}.cat-header::before{left:0}.cat-header::after{right:0;background:linear-gradient(90deg,var(--cream-dark),transparent)}.cat-header span{font-family:'Libre Franklin',sans-serif;font-size:0.65rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--wine);background:var(--cream);padding:0 1.5rem;position:relative}.scenario{background:var(--white);border:1px solid var(--cream-dark);padding:1.8rem;margin:1.5rem 0;border-radius:2px}.scenario .sc-label{font-family:'Libre Franklin',sans-serif;font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:0.8rem;display:block}.scenario .sc-guest{font-size:1rem;color:var(--ink);padding:0.6rem 0.8rem;background:var(--cream);border-left:3px solid var(--cream-dark);margin-bottom:0.8rem}.scenario .sc-you{font-size:1rem;color:var(--wine);padding:0.6rem 0.8rem;background:rgba(107,29,42,0.04);border-left:3px solid var(--wine);font-style:italic}.scenario .sc-note{font-family:'Libre Franklin',sans-serif;font-size:0.72rem;color:var(--green-olive);margin-top:0.8rem;padding-top:0.6rem;border-top:1px dashed var(--cream-dark)}.golden-box{background:linear-gradient(135deg,#FBF8F0,var(--white));border:1.5px solid var(--gold);padding:2.5rem 2rem;margin:2rem 0;text-align:center}.golden-box h4{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--gold);letter-spacing:0.05em;margin-bottom:1rem}.golden-box p{font-size:1rem;color:var(--ink-light);max-width:600px;margin:0 auto 0.5rem}.footer{background:var(--wine-deep);text-align:center;padding:3rem 2rem;color:rgba(255,255,255,0.3);font-family:'Libre Franklin',sans-serif;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase}.footer .ff-logo{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--white);letter-spacing:0.05em;margin-bottom:0.5rem}.alert-box{background:rgba(197,165,90,0.1);border-left:3px solid var(--gold);padding:1.5rem;margin:2rem 0;font-size:0.95rem;color:var(--ink-light)}@media(max-width:600px){section{padding:3rem 1.2rem}}
 </style>
 </head>
 <body>
@@ -112,140 +34,162 @@ section p, section li {font-size:1.05rem; color:var(--ink-light); line-height:1.
 <section id="fundamentals">
   <h2>Wine <em>Fundamentals</em></h2>
   <div class="section-rule"></div>
-  <p>At Alice, wine isn't just a beverage — it's part of the experience. We are an upscale casual steakhouse and late-night dining destination in the heart of Little Italy. Our guests expect guidance, and the staff member who confidently leads them through the wine list earns trust, bigger tabs, and better tips.</p>
-  
-  <h3>The Five Families</h3>
-  <p><strong>Sparkling</strong> — Think celebration, effervescence, first impressions. Offer it the moment guests sit down, especially for special occasions. Champagne and Prosecco open wallets and set the tone for the entire meal.</p>
-  <p><strong>White</strong> — Crisp, refreshing, versatile. Ranges from bone-dry Sauvignon Blanc to buttery Chardonnay. Whites shine with our seafood dishes, pastas, and lighter appetizers. Always serve chilled.</p>
-  <p><strong>Rosé</strong> — The patio wine. Beautiful colour, approachable flavour. Rosé thrives in the warm months and pairs effortlessly with Alice's shareables and salads.</p>
-  <p><strong>Red</strong> — The backbone of our list and the soul of a steakhouse. From smooth Merlots to bold Cabernets, reds pair with our Tomahawks, Striploins, and heartier mains. This is where the big upsell opportunities live.</p>
-
-  <h3>Key Vocabulary</h3>
-  <p><strong>Dry vs. Sweet</strong> — Most of our wines are dry. The Moselland Riesling is off-dry. Know this so you can steer guests toward their preference.</p>
-  <p><strong>Body</strong> — Light body (like our Pinot Grigio) feels light in the mouth. Full body (like Cabernet) feels rich. Match heavy dishes with full-bodied wines.</p>
-  <p><strong>Tannins</strong> — That drying sensation in bold reds. Tannins are softened by fat and protein — which is why a tannic Cabernet pairs perfectly with our 28oz Tomahawk.</p>
+  <p>At Alice, wine isn't just a beverage — it's part of the experience. Our guests expect guidance. The staff member who confidently leads them through our wine list earns trust, bigger tabs, and better tips.</p>
+  <h3>Strategy: Push Italian and French First</h3>
+  <p><strong>California wines are marked "While Supplies Last."</strong> Sell them but prioritize Italian and French wines for premium upsells — they're fully stocked and our best margin plays.</p>
+  <h3>The Wines You Need to Know</h3>
+  <p><strong>Belaire Rosé ($150)</strong> — Easiest sell on the list. No wine knowledge required. Perfect for celebrations, groups, date nights, late-night tables.</p>
+  <p><strong>Alice Verdeca ($95)</strong> — Our namesake wine. Easy push with a story. Guests love drinking wine that shares the restaurant's name.</p>
+  <p><strong>Solo Super Tuscan ($150)</strong> — Signature premium push for red drinkers. Bold, structured, made for celebration.</p>
+  <p><strong>Dom Pérignon ($900)</strong> — Crown jewel. For VIP, celebrations, special nights. The statement wine.</p>
+  <p><strong>Ornellaia Superiore ($900)</strong> — Crown jewel Italian red. Ultimate premium upsell for Cabernet lovers.</p>
+  <div class="alert-box">
+    <strong>Warning: California Wine Note:</strong> All California wines (Belle Glos, Decoy, Prisoner, Stags Leap, Caymus, Cakebread) are marked "While Supplies Last." We're phasing them out. Sell them, but push Italian and French for premium upsells.
+  </div>
 </section>
 
 <section id="winelist">
   <h2>The <em>Complete</em> List</h2>
   <div class="section-rule"></div>
-  <p>Know every bottle. Below is every wine we carry, organized by category, with tasting notes and ideal pairings.</p>
+  <p><strong>All prices verified against our current menu.</strong> Sparkling, White, Rosé, and Red wines organized below with tasting notes and pairings. Updated March 23, 2026.</p>
 
-  <div class="cat-header"><span>Sparkling</span></div>
+  <div class="cat-header"><span>Sparkling and Premium</span></div>
   <div class="wine-grid">
     <div class="wine-card premium">
-      <div class="wc-type">Prestige Champagne</div>
-      <div class="wc-name">Dom Pérignon</div>
-      <div class="wc-profile">The crown jewel. Creamy mousse, layered complexity — toasted brioche, citrus, white flowers. Rich and elegant.</div>
-      <div class="wc-pair">Lobster Ravioli · Surf & Turf · Tomahawk Platter</div>
-      <div class="wc-script"><strong>Say this:</strong> "If you're celebrating tonight, there's nothing quite like Dom Pérignon with our Tomahawk."</div>
+      <div class="wc-name">Dom Pérignon Brut Vintage</div>
+      <div class="wc-price">$900</div>
+      <div class="wc-profile">The crown jewel. Creamy, complex — toasted brioche, citrus, white flowers. Rich, elegant finish.</div>
+      <div class="wc-tag">Crown Jewel</div>
+    </div>
+    <div class="wine-card premium">
+      <div class="wc-name">Pierre Jouet Brut Champagne</div>
+      <div class="wc-price">$265</div>
+      <div class="wc-profile">Elegant French Champagne. Dry, vibrant, bright citrus. Real Champagne without prestige price.</div>
+    </div>
+    <div class="wine-card premium">
+      <div class="wc-name">Belaire Rosé Sparkling</div>
+      <div class="wc-price">$150</div>
+      <div class="wc-profile">Festive, celebratory, easy to love. No wine knowledge required. Perfect for birthdays, groups, date nights, late-night energy.</div>
+      <div class="wc-tag">Easy Push #1</div>
     </div>
     <div class="wine-card">
-      <div class="wc-type">Champagne</div>
-      <div class="wc-name">Pierre Juliet Brut</div>
-      <div class="wc-profile">Our house Champagne. Dry and vibrant with bright citrus and green apple. Smart choice for guests who want real Champagne without the prestige price tag.</div>
-      <div class="wc-pair">Burrata · Salmon Tartare · Calamari</div>
-    </div>
-    <div class="wine-card">
-      <div class="wc-type">Prosecco</div>
       <div class="wc-name">Mionetto Prosecco</div>
-      <div class="wc-profile">Light, fruity, playful. Pear, white peach, and soft bubbles. Easy to drink, easy to sell.</div>
-      <div class="wc-pair">Street Corn Ribs · Gruyère Cheese Sticks</div>
+      <div class="wc-price">$18 / $59</div>
+      <div class="wc-profile">Light, fruity, playful. Pear, white peach. Easy to drink, easy to sell.</div>
+    </div>
+    <div class="wine-card">
+      <div class="wc-name">Pellar Rosé Bubbles</div>
+      <div class="wc-price">$13 / $55</div>
+      <div class="wc-profile">Local Niagara bubbles. Fresh, approachable.</div>
     </div>
   </div>
 
-  <div class="cat-header"><span>White Wines</span></div>
+  <div class="cat-header"><span>Red Wines Signature Bottles</span></div>
   <div class="wine-grid">
-    <div class="wine-card">
-      <div class="wc-type">Sauvignon Blanc</div>
-      <div class="wc-name">Villa Maria</div>
-      <div class="wc-profile">New Zealand classic. Crisp with grapefruit and passionfruit. Mouthwatering acidity that cuts through rich dishes.</div>
-      <div class="wc-pair">Pan Seared Salmon · Linguine Frutti di Mare · Caesar Salad</div>
-    </div>
-    <div class="wine-card">
-      <div class="wc-type">Pinot Grigio</div>
-      <div class="wc-name">Santa Margherita</div>
-      <div class="wc-profile">Italy's most recognized Pinot Grigio. Light, clean, mineral-driven with notes of citrus and almond.</div>
-      <div class="wc-pair">Burrata · Calamari · Beet Salad</div>
+    <div class="wine-card premium">
+      <div class="wc-name">Ornellaia Superiore Bolgheri</div>
+      <div class="wc-price">$900</div>
+      <div class="wc-profile">Crown jewel Italian red. Bold, structured, elegant. For Cabernet lovers who want the best.</div>
+      <div class="wc-tag">Crown Jewel</div>
     </div>
     <div class="wine-card premium">
-      <div class="wc-type">Chardonnay</div>
-      <div class="wc-name">Maison Louis Latour</div>
-      <div class="wc-profile">Burgundian elegance. Mineral-driven with subtle oak, white flowers, and a creamy mid-palate that stays refined.</div>
-      <div class="wc-pair">Lobster Ravioli · Truffle Mushroom Mafalde</div>
+      <div class="wc-name">Caymus Vineyards Cabernet Sauvignon</div>
+      <div class="wc-price">$280</div>
+      <div class="wc-profile">California Cabernet. Full-bodied powerhouse. Perfect with our Tomahawk.</div>
+      <div class="wc-tag">CA — While Supplies Last</div>
+    </div>
+    <div class="wine-card premium">
+      <div class="wc-name">Cakebread Cabernet Sauvignon</div>
+      <div class="wc-price">$360</div>
+      <div class="wc-profile">California classic. Bold, structured, iconic.</div>
+      <div class="wc-tag">CA — While Supplies Last</div>
+    </div>
+    <div class="wine-card premium">
+      <div class="wc-name">Stags Leap Cabernet Sauvignon</div>
+      <div class="wc-price">$190</div>
+      <div class="wc-profile">California Cabernet. Smooth, accessible premium.</div>
+      <div class="wc-tag">CA — While Supplies Last</div>
+    </div>
+    <div class="wine-card premium">
+      <div class="wc-name">The Prisoner Zinfandel Blend</div>
+      <div class="wc-price">$160</div>
+      <div class="wc-profile">California Zinfandel blend. Bold, jammy, fun.</div>
+      <div class="wc-tag">CA — While Supplies Last</div>
+    </div>
+    <div class="wine-card premium">
+      <div class="wc-name">Decoy Cabernet Sauvignon</div>
+      <div class="wc-price">$140</div>
+      <div class="wc-profile">California Cabernet. Bold, accessible.</div>
+      <div class="wc-tag">CA — While Supplies Last</div>
+    </div>
+    <div class="wine-card premium">
+      <div class="wc-name">Belle Glos Pinot Noir</div>
+      <div class="wc-price">$120</div>
+      <div class="wc-profile">California Pinot Noir. Rich, elegant.</div>
+      <div class="wc-tag">CA — While Supplies Last</div>
+    </div>
+    <div class="wine-card premium">
+      <div class="wc-name">Solo Super Tuscan</div>
+      <div class="wc-price">$150</div>
+      <div class="wc-profile">Italian Super Tuscan. Bold, structured. Signature push. Made for celebration.</div>
+      <div class="wc-tag">Signature Push</div>
+    </div>
+    <div class="wine-card premium">
+      <div class="wc-name">Alice Verdeca</div>
+      <div class="wc-price">$95</div>
+      <div class="wc-profile">Our namesake wine. Italian white. Easy push with a story. Guests love it.</div>
+      <div class="wc-tag">Namesake Wine</div>
     </div>
   </div>
 
-  <div class="cat-header"><span>Red Wines</span></div>
-  <div class="wine-grid">
-    <div class="wine-card">
-      <div class="wc-type">Merlot</div>
-      <div class="wc-name">Caymus Merlot</div>
-      <div class="wc-profile">Smooth, fruit-forward. Plum, cherry, cocoa. Medium body. Great intro to premium reds.</div>
-      <div class="wc-pair">Ribeye · Lamb Chops · Burger</div>
-    </div>
-    <div class="wine-card premium">
-      <div class="wc-type">Cabernet Sauvignon</div>
-      <div class="wc-name">Caymus Cabernet</div>
-      <div class="wc-profile">Full-bodied powerhouse. Dark cherry, blackberry, vanilla. Tannic grip that pairs perfectly with our beef.</div>
-      <div class="wc-pair">28oz Tomahawk · Striploin · Porterhouse</div>
-      <div class="wc-script"><strong>Premium upsell:</strong> "The Caymus Cabernet is made for our Tomahawk — the tannins grip the fat beautifully."</div>
-    </div>
-    <div class="wine-card premium">
-      <div class="wc-type">Super Tuscan</div>
-      <div class="wc-name">Our Flagship Blend</div>
-      <div class="wc-profile">A wine made for celebration. Bold, structured, elegant. This is the wine that makes a night unforgettable.</div>
-      <div class="wc-pair">Tomahawk Platter · Prime Rib · Special Occasion</div>
-      <div class="wc-script"><strong>Say this:</strong> "For a night like this, the Tuscan is our house pride. It's worth every penny."</div>
-    </div>
-  </div>
+  <p><strong>Additional reds available:</strong> Cono Sur Cab ($50), Philippe Rothschild Pinot ($59), Lan Rioja ($65), Les Jamelles Merlot ($65), La Posta Malbec ($69), Paul Mas Cab ($75), Roko Montepulciano ($75), Luca Menicucci Chianti ($79), Depuis 1935 Malbec ($79)</p>
+  <p><strong>White, Rosé, and other varietals:</strong> Complete selection from house white ($12/$50) to premium imports and specialty wines</p>
 </section>
 
 <section id="pairings">
   <h2>Perfect <em>Pairings</em></h2>
   <div class="section-rule"></div>
-  <p>Wine pairing isn't complicated. Match intensity with intensity:</p>
+  <p><strong>Match intensity with intensity:</strong></p>
   <ul>
-    <li><strong>Light dishes</strong> (salads, seafood, pasta) → Light & crisp wines (Pinot Grigio, Sauvignon Blanc)</li>
-    <li><strong>Rich dishes</strong> (cream sauces, butter, cheese) → Medium to full wines (Chardonnay, Merlot)</li>
-    <li><strong>Beef & red meat</strong> → Bold reds (Cabernet, our Super Tuscan)</li>
-    <li><strong>Celebration or uncertainty</strong> → Champagne or Prosecco (always safe, always welcome)</li>
+    <li><strong>Light dishes</strong> (salads, seafood, pasta) to Light wines (Pinot Grigio, Sauvignon Blanc)</li>
+    <li><strong>Rich dishes</strong> (cream, butter, cheese) to Medium/Full wines (Chardonnay, Merlot)</li>
+    <li><strong>Beef and red meat</strong> to Bold reds (Cabernet, Super Tuscan, Malbec)</li>
+    <li><strong>Celebration or uncertainty</strong> to Champagne or Prosecco (always safe)</li>
   </ul>
 </section>
 
 <section id="upsell">
   <h2>Upsell <em>System</em></h2>
   <div class="section-rule"></div>
-  <p>The goal isn't to push expensive bottles. The goal is to match guests with wines that elevate their meal.</p>
-  <p><strong>Step 1: Listen.</strong> Ask "Are you ordering beef, seafood, or a lighter dish?" Their choice tells you everything.</p>
-  <p><strong>Step 2: Suggest the right tier.</strong> Start with a mid-range option. If they seem comfortable, float the premium.</p>
-  <p><strong>Step 3: Use the story.</strong> Don't say "This is expensive." Say "This pairs unforgettably with your Tomahawk" or "This is personal favorite."</p>
-  <p><strong>Step 4: Respect the decision.</strong> If they order house Prosecco, treat it like they ordered Dom. Your enthusiasm matters more than the price tag.</p>
+  <p><strong>Three-Step Upsell:</strong></p>
+  <p><strong>1. Listen:</strong> Ask "What are you ordering — beef, seafood, or something lighter?" Their choice tells you everything.</p>
+  <p><strong>2. Suggest the right tier:</strong> Start with a mid-range option. If comfortable, float the premium. Lead with Italian and French.</p>
+  <p><strong>3. Use the story:</strong> Don't say "This is expensive." Say "This pairs unforgettably with your Tomahawk" or "This is our house pride."</p>
+  <p><strong>The Golden Principle:</strong> Respect their decision. If they order house wine, treat it like Dom. Your enthusiasm matters more than price.</p>
 </section>
 
 <section id="spotlight">
   <h2>Spotlight <em>Wines</em></h2>
   <div class="section-rule"></div>
-  <p>These are your go-to recommendations:</p>
-  
+
   <div class="golden-box">
-    <h4>🏆 FOR CELEBRATIONS</h4>
-    <p><strong>Dom Pérignon</strong> — The only choice when someone says "it's a special night."</p>
+    <h4>Easiest Sell</h4>
+    <p><strong>Belaire Rosé ($150)</strong> — No wine knowledge required. Just read the room. Birthdays, groups, date nights, late-night energy tables.</p>
   </div>
 
   <div class="golden-box">
-    <h4>🥩 FOR THE TOMAHAWK</h4>
-    <p><strong>Caymus Cabernet</strong> — Built for our best steak. Never recommend anything lighter.</p>
+    <h4>Namesake Wine</h4>
+    <p><strong>Alice Verdeca ($95)</strong> — Our wine, our name. Easy push with a story. Guests love it.</p>
   </div>
 
   <div class="golden-box">
-    <h4>🎯 FOR ANYONE UNCERTAIN</h4>
-    <p><strong>Pierre Juliet Brut</strong> — Champagne always works. It's elegant, celebratory, and approachable.</p>
+    <h4>Italian Signature</h4>
+    <p><strong>Solo Super Tuscan ($150)</strong> — For red lovers. Bold, structured, made for celebration. Our signature push.</p>
   </div>
 
   <div class="golden-box">
-    <h4>⭐ FOR THEM TO REMEMBER</h4>
-    <p><strong>Our Super Tuscan</strong> — This is the wine that makes a night unforgettable. Save this for the guests who trust you.</p>
+    <h4>Crown Jewels</h4>
+    <p><strong>Dom Pérignon ($900)</strong> and <strong>Ornellaia Superiore ($900)</strong> — For VIP, celebrations, special nights. The statement wines.</p>
   </div>
 </section>
 
@@ -254,38 +198,38 @@ section p, section li {font-size:1.05rem; color:var(--ink-light); line-height:1.
   <div class="section-rule"></div>
 
   <div class="scenario">
-    <span class="sc-label">Scenario 1: "I don't know much about wine..."</span>
+    <span class="sc-label">Scenario 1: I Don't Know Much About Wine</span>
     <div class="sc-guest">Guest: "I'm not really a wine person. Just get me something red."</div>
     <div class="sc-you">You: "Perfect. What are you ordering for food tonight? Beef, seafood, or something lighter?"</div>
-    <div class="sc-note">Their food choice, not their wine knowledge, is your guide. Pair to the dish, not their ego.</div>
+    <div class="sc-note">Their food choice, not wine knowledge, is your guide. Pair to the dish.</div>
   </div>
 
   <div class="scenario">
-    <span class="sc-label">Scenario 2: Upselling the Premium</span>
-    <div class="sc-guest">Guest: "I'll take the Merlot."</div>
-    <div class="sc-you">You: "Great choice — our Caymus Cabernet is on special right now, and it pairs even better with what you're ordering. Would you like to try that instead?"</div>
-    <div class="sc-note">Notice: You acknowledge their choice first. This builds trust, then the upsell lands.</div>
+    <span class="sc-label">Scenario 2: Upselling from Mid-Range</span>
+    <div class="sc-guest">Guest: "I'll take the Solo Super Tuscan."</div>
+    <div class="sc-you">You: "Great choice — that's our house pride. It pairs beautifully with what you're ordering. Should I bring that?"</div>
+    <div class="sc-note">Acknowledge their choice first. Then the upsell lands.</div>
   </div>
 
   <div class="scenario">
     <span class="sc-label">Scenario 3: The Celebration</span>
     <div class="sc-guest">Guest: "We're celebrating an engagement tonight."</div>
     <div class="sc-you">You: "Congratulations! There's nothing quite like Dom Pérignon for a moment like this. Should I bring that?"</div>
-    <div class="sc-note">Don't ask if they want Champagne. Tell them what Champagne you recommend. Own your expertise.</div>
+    <div class="sc-note">Don't ask if they want Champagne. Tell them what you recommend. Own your expertise.</div>
   </div>
 
   <div class="scenario">
-    <span class="sc-label">Scenario 4: Budget Concern</span>
-    <div class="sc-guest">Guest: "Something inexpensive, please."</div>
-    <div class="sc-you">You: "Of course. The Mionetto Prosecco is our best value — it's festive, delicious, and pairs with everything. Or if you're ordering beef, our Merlot is solid and approachable."</div>
-    <div class="sc-note">Never make someone feel bad about budget. Just steer them to the best option at their price point.</div>
+    <span class="sc-label">Scenario 4: Belaire Easy Push</span>
+    <div class="sc-guest">Guest: Your group looks like you're celebrating tonight.</div>
+    <div class="sc-you">You: "Belaire Rosé is perfect for this vibe — festive, fun, pairs with everything. Can I grab a bottle?"</div>
+    <div class="sc-note">Read the room. Belaire is the easiest sell on the list.</div>
   </div>
 
   <div class="scenario">
-    <span class="sc-label">Scenario 5: The Committed Guest</span>
-    <div class="sc-guest">Guest: "I'm ordering the Tomahawk. What do you recommend with that?"</div>
-    <div class="sc-you">You: "The Caymus Cabernet was made for that steak. Full-bodied, tannic — it grips the fat and makes every bite better."</div>
-    <div class="sc-note">When someone trusts you, give them confidence. Use technical language — it builds authority.</div>
+    <span class="sc-label">Scenario 5: Italian and French Priority</span>
+    <div class="sc-guest">Guest: "What's your best red?"</div>
+    <div class="sc-you">You: "For premium reds, we have two crown jewels: our Solo Super Tuscan ($150) — Italian, bold, our house signature — or the Ornellaia ($900) — if you want to go all-in. Both are magnificent."</div>
+    <div class="sc-note">Lead with Italian and French. Both are fully stocked and have the best margins.</div>
   </div>
 </section>
 
@@ -294,45 +238,51 @@ section p, section li {font-size:1.05rem; color:var(--ink-light); line-height:1.
   <div class="section-rule"></div>
 
   <div class="golden-box">
-    <h4>1. TASTE MATTERS MORE THAN PRICE</h4>
-    <p>A $20 Prosecco that makes the guest happy beats a $100 Burgundy they don't enjoy.</p>
+    <h4>1. Push Italian and French First</h4>
+    <p>California wines are "While Supplies Last." Lead premium upsells with Italian (Solo, Ornellaia, Alice Verdeca) and French wines.</p>
   </div>
 
   <div class="golden-box">
-    <h4>2. CHAMPAGNE IS ALWAYS THE ANSWER</h4>
-    <p>Celebration? Uncertainty? First course? Champagne or Prosecco will never disappoint.</p>
+    <h4>2. Belaire for Celebration</h4>
+    <p>$150. No wine knowledge required. Just read the room — birthdays, groups, late-night energy.</p>
   </div>
 
   <div class="golden-box">
-    <h4>3. MATCH FOOD, NOT THE GUEST</h4>
+    <h4>3. Match Food, Not the Guest</h4>
     <p>Forget what they ordered last time. Ask what they're eating tonight, then pair to that.</p>
   </div>
 
   <div class="golden-box">
-    <h4>4. CONFIDENCE SELLS</h4>
-    <p>If you seem uncertain, they'll feel uncertain. Know your bottles, own your recommendations.</p>
+    <h4>4. Confidence Sells</h4>
+    <p>If you seem uncertain, they feel uncertain. Know your wines, own your recommendations.</p>
   </div>
 
   <div class="golden-box">
-    <h4>5. NEVER DISMISS A CHOICE</h4>
-    <p>If they order house wine, treat it like they ordered Dom. Your professionalism matters more than their decision.</p>
+    <h4>5. Acknowledge Before Upselling</h4>
+    <p>If they order something, acknowledge it first. "Great choice" opens the door for upselling.</p>
   </div>
 
   <div class="golden-box">
-    <h4>6. BIG PLATES = BIG WINES</h4>
-    <p>28oz Tomahawk? Striploin? Recommend bold reds. Light wines get lost with heavy beef.</p>
+    <h4>6. Tell Stories</h4>
+    <p>"Our namesake wine" (Alice Verdeca). "Our house pride" (Solo). "Crown jewel" (Dom, Ornellaia). Stories sell better than prices.</p>
   </div>
 
   <div class="golden-box">
-    <h4>7. SERVE WITH PURPOSE</h4>
-    <p>Bring wine like it's meant to be there. Make the moment feel special, because it is.</p>
+    <h4>7. Respect the Decision</h4>
+    <p>If they order house wine, treat it like Dom. Your professionalism matters more than their choice.</p>
+  </div>
+
+  <div class="golden-box">
+    <h4>8. Test Coming Soon</h4>
+    <p>You will be tested on this material in coming weeks. Start learning now. This knowledge directly improves your service, bill size, and tips.</p>
   </div>
 </section>
 
 <div class="footer">
   <div class="ff-logo">ALICE</div>
-  <div class="ff-addr">488 College Street, Toronto, Ontario</div>
+  <div class="ff-addr">488 College Street, Toronto</div>
   <p>Master every pour. Elevate every table.</p>
+  <p>Last updated: March 23, 2026 — All prices verified against current menu.</p>
 </div>
 
 </body>
